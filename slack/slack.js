@@ -5,7 +5,10 @@ const socketio = require('socket.io')
 let namespaces = require('./data/namespaces');
 // console.log(namespaces[0]);
 app.use(express.static(__dirname + '/public'));
-const expressServer = app.listen(9000);
+const PORT= process.env.PORT || 9000;
+const expressServer = app.listen(PORT,()=>{
+    console.log(`server started at ${PORT}`);
+});
 const io = socketio(expressServer);
 
 
